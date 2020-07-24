@@ -1,0 +1,1 @@
+-rw-r--r--. 1 root root 280 6月   1 2019 /etc/hosts

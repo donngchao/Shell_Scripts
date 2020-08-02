@@ -5,7 +5,7 @@
 #time:时间,loalip:eth0网卡IP,free_mem:剩余内存,free_disk:剩余磁盘
 #cpu_load:15分钟平均负载,login_user:登陆系统的用户,procs:当前进程数量
 local_time=$(date +"%Y%m%d %H:%M:%S")
-local_ip=$(ifconfig eth0 | grep netmask | tr -s " " | cut -d" " -f3)
+local_ip=$(ifconfig ens33 | grep netmask | tr -s " " | cut -d" " -f3)
 free_mem=$(cat /proc/meminfo |grep Avai |tr -s " " | cut -d" " -f2)
 free_disk=$(df | grep "/$" | tr -s " " | cut -d' ' -f4)
 cpu_load=$(cat /proc/loadavg | cut -d' ' -f3)

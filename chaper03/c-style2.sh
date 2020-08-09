@@ -7,3 +7,9 @@ for ((i=1,j=5;i<=5;i++,j--))
 do
     echo "$i $j"
 done
+
+
+for ((k=10,l=20;l<=24;k--,l++ ))
+do
+    echo "$k $l"
+done

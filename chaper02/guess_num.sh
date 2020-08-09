@@ -7,8 +7,11 @@ read -p "请输入1-10之间的整数:" guess
 
 if [ $guess -eq $num ];then
     echo "恭喜,猜对了,就是:$num"
+    echo "you are so clever..."
 elif [ $guess -lt $num ];then
     echo "Oops,猜小了."
+    echo "The number in fact is:$num"
 else
     echo "Oops,猜大了."
+    echo "The number in fact is:$num"
 fi

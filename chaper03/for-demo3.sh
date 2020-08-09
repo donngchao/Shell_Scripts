@@ -6,3 +6,8 @@ for i
 do
     echo $i
 done
+
+for j 
+do
+    echo $j
+done

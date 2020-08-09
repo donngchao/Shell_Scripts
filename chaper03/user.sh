@@ -10,3 +10,12 @@ do
         echo "123456" | passwd --stdin $i
     fi
 done
+
+for j in $(cat user.txt)
+do
+    if [[ $j = "lucy"  ]];then
+        echo "$j is beautify."
+    else
+        echo "hello $j !"
+    fi
+done

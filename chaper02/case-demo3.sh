@@ -11,6 +11,6 @@ case $key in
 [Nn]|[Nn][Oo])
     echo "您选择的是no.";;
 *)
-    echo "无效的输入";;
+    echo "invalid input,you should input either yes or no.";;
 esac
 

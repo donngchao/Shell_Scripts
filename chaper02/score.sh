@@ -24,16 +24,16 @@ else
 fi
 
 #或者下面的排序方式也可以
-#if [ $score -le 30 ];then
-#    echo "初学乍练."
-#elif [ $score -le 60 ];then
-#    echo "初窥门径."
-#elif [ $score -le 70 ];then
-#    echo "略有小成."
-#elif [ $score -le 80 ];then
-#    echo "炉火纯青."
-#elif [ $score -le 90 ];then
-#    echo "登封造极."
-#else
-#    echo "笑傲江湖."
-#fi
+if [ $score -le 30 ];then
+    echo "初学乍练."
+elif [ $score -le 60 ];then
+    echo "初窥门径."
+elif [ $score -le 70 ];then
+    echo "略有小成."
+elif [ $score -le 80 ];then
+    echo "炉火纯青."
+elif [ $score -le 90 ];then
+    echo "登封造极."
+else
+    echo "笑傲江湖."
+fi

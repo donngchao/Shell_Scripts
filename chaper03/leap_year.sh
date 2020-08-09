@@ -11,3 +11,13 @@ do
         echo "$i:非闰年"
     fi
 done
+
+
+for j in {2008..2020}
+do
+	if [[ $[j%4] -eq 0 && $[j%100] -ne 0 || $[j%400] -eq 0 ]];then
+	   echo "The year $j is leap year."
+	else
+	   echo "The year $j is not leap year."
+	fi
+done

@@ -8,8 +8,10 @@ a)
     echo "I am a.";;
 b)
     echo "I am b.";;
-c)  echo "I am c.";;
-d)  echo "I am d.";;
+c)  
+    echo "I am c.";;
+d)  
+    echo "I am d.";;
 e)
     echo "I am e.";;
 f)

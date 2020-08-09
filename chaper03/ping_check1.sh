@@ -11,3 +11,14 @@ do
         echo "$net.$i is down."
     fi
 done
+
+subnet="200.200.153"
+for j in {1..255}
+do
+    ping -c2 -i0.5 -W1 $subnet.$j &>/dev/null
+    if [ $? -eq 0 ];then
+	echo "$subnet.$j is up."
+    else
+	echo "$subnet.$j is down."
+    fi
+done

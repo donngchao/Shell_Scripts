@@ -15,4 +15,14 @@ for i in {1..8}
 do
     banana=$[(banana+1)*2]
 done
-    echo $banana
+    
+echo "after calculation, the origin banana number is:"
+echo $banana
+
+
+orange=1
+for j in {1..2}
+do
+    orange=$[(orange+2)*3]
+done
+echo $orange

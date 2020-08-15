@@ -17,3 +17,20 @@ function demo() {
 demo
 echo
 echo "$func_var $global_var1 $global_var2."
+
+
+out_of_func_var1="cat"
+out_of_func_var2="dog"
+
+#define funciton here
+function test_func() {
+   echo -e "\033[46mfunction [test_func] started...\033[0m"
+   inner_var="Music:"
+   out_of_func_var2="Go home"
+   echo "$inner_var $out_of_func_var2"
+   echo -e "\033[46mfunction [test_func] ended...\033[0m"
+
+}
+test_func
+echo
+echo "$inner_var -- $out_of_func_var1 -- $out_of_func_var2"

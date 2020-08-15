@@ -11,6 +11,16 @@ Usage: --network | -n
   Monitor network interface information.
 EOF
 }
+
+function test_fun() {
+   echo "Just use this function!"
+   cat << EOF
+   Use this function is for shell function usage test
+   As well as a kind of test of cat EOF TEST
+
+EOF
+}
+
 case $1 in
 --memory|-m)
     free;;
@@ -18,6 +28,8 @@ case $1 in
     ip -s link;;
 --help|-h)
     print_usage;;
+--test|-t)
+   test_fun;;
 *)
     print_usage;;
 esac

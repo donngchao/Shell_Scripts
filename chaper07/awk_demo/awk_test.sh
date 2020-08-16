@@ -128,4 +128,71 @@ awk 'END{print NR}' /etc/passwd
 
 
 
+awk -F: \
+'BEGIN{print "user name UID"} \
+{print $1,$3,$7}  \
+END{print "totally have "NR" accounts."}' /etc/passwd | column -t
+
+
+awk -F: 'BEGIN{print "passwd test"}{print $0}END{print "total "NR" records"}' /etc/passwd | column -t
+
+#use awk to do math calculation
+awk 'BEGIN{print "2+3:" 2+3}'
+awk 'BEGIN{print "10-4:" 10-4}'
+awk 'BEGIN{print "2*3:"  2*3}'
+awk 'BEGIN{print "2/10:" 2/10}'
+awk 'BEGIN{print "6%3:"   6%3}'
+awk 'BEGIN{print "2**3:" 2**3}'
+awk 'BEGIN{print "4**3:" 4**3}'
+awk 'BEGIN{x=8;y=2;print "8-2:" x-y}'
+awk 'BEGIN{x=8;y=2;print "8*2:" x*y}'
+awk 'BEGIN{x=1;x++;print x}'
+awk 'BEGIN{x=1;x--;print x}'
+awk 'BEGIN{x=1;x+=8;print x}'
+awk 'BEGIN{x=8;x-=2;print x}'
+awk 'BEGIN{x=8;x*=2;print x}'
+awk 'BEGIN{x=8;x/=2;print x}'
+awk 'BEGIN{x=8;x%=2;print x}'
+awk 'BEGIN{print x+8}'
+awk 'BEGIN{print x*8}'
+awk 'BEGIN{print "["x"]","["y"]"}'
+
+awk 'BEGIN{print "print whitespace:"x,"print whitespace:"y,"END"}'
+awk '/bash$/{x++} END{print x}' /etc/passwd
+who | awk '$1=="root"{x++}  END{print x}'
+seq 200 | awk '$1%7==0 && $1~/7/'
+
+#df test
+df
+df | tail -n +2
+df | tail -n +2 | awk '{sum+=$4} END{print sum}'
+
+#ls test
+ls -l /etc/*.conf
+ls -l /etc/*.conf | awk '{sum+=$5} END{print sum}'
+ls -l /etc | awk '/^-/{sum+=$5}'
+
+#ps test
+ps -eo user,pid,pcpu,comm | awk '{if ($3>0.5) {print}}'
+ps -eo user,pid,rss,comm  | awk '{if ($3>1024) {print}}'
+
+useradd rick
+useradd vicky
+awk -F: \
+'{if ($3<1000) {x++}else{y++}} \
+END{print "sys user:"x,"normal user:"y}' /etc/passwd
+
+ls -l /etc | awk '{if ($1~/^-/) {x++} else{y++}} END {print "normal file num:"x,"directory num:"y}'
+
+seq 10 | awk '{if ($1%2==0) {print $1" is even";x++} else{print $1" is odd";y++}}END {print "even number:"x,"odd number:"y}'
+
+
+awk '{if ($2>90) {print $1,"\tperfect life"} else if($2>=80) {print $1,"\tvery great."}
+else if($2>=70) {print $1,"\tnormal and just so so"}
+else if($2>=60) {print $1,"\tnot bad"}
+else {print $1,"\tnot good"}
+}' score.txt
+
+
+
 

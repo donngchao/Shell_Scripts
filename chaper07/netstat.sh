@@ -122,6 +122,16 @@ print_info(){
     $1
 }
 
+print_error(){
+    echo -e "###################################################### $1"
+}
+
+print_error2(){
+    echo -e "******************************************************"
+    $1
+}
+
+
 print_info tcp_total
 print_info tcp_listen
 print_info tcp_estab
@@ -134,3 +144,5 @@ print_info unix_total
 print_info remote_count
 print_info port_count
 echo -e "------------------------------------------------------"
+print_error "error log test ..."
+print_error2 date

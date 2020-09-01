@@ -7,22 +7,23 @@ TCP_Total=$(ss -s | awk '$1=="TCP"{print $2}')
 UDP_Total=$(ss -s | awk '$1=="UDP"{print $2}')
 #所有Unix sockets连接个数.
 Unix_sockets_Total=$(ss -ax | awk 'BEGIN{count=0} {count++} END{print count}')
+#Unix_sockets_Total=$(ss -ax | wc -l)
 #所有处于Listen监听状态的TCP端口个数.
-TCP_Listen_Total=$(ss -antlpH | awk 'BEGIN{count=0} {count++} END{print count}')
+TCP_Listen_Total=$(ss -antlp | awk 'BEGIN{count=0} {count++} END{print count}')
 #所有处于ESTABLISHED状态的TCP连接个数.
-TCP_Estab_Total=$(ss -antpH | awk 'BEGIN{count=0} /^ESTAB/{count++} END{print count}')
+TCP_Estab_Total=$(ss -antp | awk 'BEGIN{count=0} /^ESTAB/{count++} END{print count}')
 #所有处于SYN-RECV状态的TCP连接个数.
-TCP_SYN_RECV_Total=$(ss -antpH | awk 'BEGIN{count=0} /^SYN-RECV/{count++} END{print count}')
+TCP_SYN_RECV_Total=$(ss -antp | awk 'BEGIN{count=0} /^SYN-RECV/{count++} END{print count}')
 #所有处于TIME-WAIT状态的TCP连接个数.
-TCP_TIME_WAIT_Total=$(ss -antpH | awk 'BEGIN{count=0} /^TIME-WAIT/{count++} END{print count}')
+TCP_TIME_WAIT_Total=$(ss -antp | awk 'BEGIN{count=0} /^TIME-WAIT/{count++} END{print count}')
 #所有处于TIME-WAIT1状态的TCP连接个数.
-TCP_TIME_WAIT1_Total=$(ss -antpH | awk 'BEGIN{count=0} /^TIME-WAIT1/{count++} END{print count}')
+TCP_TIME_WAIT1_Total=$(ss -antp | awk 'BEGIN{count=0} /^TIME-WAIT1/{count++} END{print count}')
 #所有处于TIME-WAIT2状态的TCP连接个数.
-TCP_TIME_WAIT2_Total=$(ss -antpH | awk 'BEGIN{count=0} /^TIME-WAIT2/{count++} END{print count}')
+TCP_TIME_WAIT2_Total=$(ss -antp | awk 'BEGIN{count=0} /^TIME-WAIT2/{count++} END{print count}')
 #所有远程主机的TCP连接次数.
-TCP_Remote_Count=$(ss -antH | awk '$1!~/LISTEN/{IP[$5]++} END{ for(i in IP){print IP[i],i} }' | sort -nr)
+TCP_Remote_Count=$(ss -ant | awk '$1!~/LISTEN/{IP[$5]++} END{ for(i in IP){print IP[i],i} }' | sort -nr)
 #每个端口被访问的次数.
-TCP_Port_Count=$(ss -antH | sed -r 's/ +/ /g' | awk -F"[ :]" '$1!~/LISTEN/{port[$5]++} END{for(i in port){print port[i],i}}' | sort -nr)
+TCP_Port_Count=$(ss -ant | sed -r 's/ +/ /g' | awk -F"[ :]" '$1!~/LISTEN/{port[$5]++} END{for(i in port){print port[i],i}}' | sort -nr)
 
 #定义输出颜色.
 SUCCESS="echo -en \\033[1;32m"   #绿色.
